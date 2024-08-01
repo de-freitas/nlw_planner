@@ -27,6 +27,7 @@ export default function CreateActivityModal({
     });
 
     closeCreateActivityModal();
+    window.document.location.reload();
   }
 
   return (
