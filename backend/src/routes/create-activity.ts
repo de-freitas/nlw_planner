@@ -33,13 +33,13 @@ export async function createActivity(app: FastifyInstance) {
         throw new ClientError(`Trip not found!`);
       }
 
-      if (dayjs(occurs_at).isBefore(trip.starts_at)) {
+      if (dayjs(occurs_at.getDay()).isBefore(trip.starts_at.getDay())) {
         throw new ClientError(
           `Invalid activity date! 'occurs_at' param is before 'starts_at' trip`
         );
       }
 
-      if (dayjs(occurs_at).isAfter(trip.ends_at)) {
+      if (dayjs(occurs_at.getDay()).isAfter(trip.ends_at.getDay())) {
         throw new ClientError(
           `Invalid activity date! 'occurs_at' param is after 'ends_at' trip`
         );
